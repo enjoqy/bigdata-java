@@ -52,8 +52,8 @@ public class JobService {
 
         List<MapResult> mapResult = new ArrayList<>();
         List<Object[]> groupByCity = jobRepository.findGroupByCity(type);
-        for (int i = 0; i < groupByCity.size(); i++) {
-            mapResult.add(MapResult.builder().name(groupByCity.get(i)[0]).value(groupByCity.get(i)[2]).build());
+        for (Object[] objects : groupByCity) {
+            mapResult.add(MapResult.builder().name(objects[0]).value(objects[2]).build());
         }
         return mapResult;
     }
@@ -62,8 +62,8 @@ public class JobService {
 
         List<MapResult> mapResult = new ArrayList<>();
         List<Object[]> groupByCity = jobRepository.findGroupByCity(type);
-        for (int i = 0; i < groupByCity.size(); i++) {
-            mapResult.add(MapResult.builder().name(groupByCity.get(i)[0]).value(groupByCity.get(i)[1]).build());
+        for (Object[] objects : groupByCity) {
+            mapResult.add(MapResult.builder().name(objects[0]).value(objects[1]).build());
         }
         return mapResult;
     }
@@ -72,8 +72,8 @@ public class JobService {
 
         List<MapResult> mapResult = new ArrayList<>();
         List<Object[]> groupByCity = jobRepository.findGroupByCity(type);
-        for (int i = 0; i < groupByCity.size(); i++) {
-            mapResult.add(MapResult.builder().name(groupByCity.get(i)[0]).value(groupByCity.get(i)[3]).build());
+        for (Object[] objects : groupByCity) {
+            mapResult.add(MapResult.builder().name(objects[0]).value(objects[3]).build());
         }
         return mapResult;
     }
@@ -82,8 +82,8 @@ public class JobService {
 
         List<MapResult> mapResult = new ArrayList<>();
         List<Object[]> groupByCity = jobRepository.findGroupByProvince(type);
-        for (int i = 0; i < groupByCity.size(); i++) {
-            mapResult.add(MapResult.builder().name(groupByCity.get(i)[0]).value(groupByCity.get(i)[2]).build());
+        for (Object[] objects : groupByCity) {
+            mapResult.add(MapResult.builder().name(objects[0]).value(objects[2]).build());
         }
         return mapResult;
     }
@@ -91,8 +91,8 @@ public class JobService {
 
         List<MapResult> mapResult = new ArrayList<>();
         List<Object[]> groupByCity = jobRepository.findGroupByProvince(type);
-        for (int i = 0; i < groupByCity.size(); i++) {
-            mapResult.add(MapResult.builder().name(groupByCity.get(i)[0]).value(groupByCity.get(i)[1]).build());
+        for (Object[] objects : groupByCity) {
+            mapResult.add(MapResult.builder().name(objects[0]).value(objects[1]).build());
         }
         return mapResult;
     }
@@ -101,8 +101,8 @@ public class JobService {
 
         List<MapResult> mapResult = new ArrayList<>();
         List<Object[]> groupByCity = jobRepository.findGroupByProvince(type);
-        for (int i = 0; i < groupByCity.size(); i++) {
-            mapResult.add(MapResult.builder().name(groupByCity.get(i)[0]).value(groupByCity.get(i)[3]).build());
+        for (Object[] objects : groupByCity) {
+            mapResult.add(MapResult.builder().name(objects[0]).value(objects[3]).build());
         }
         return mapResult;
     }
@@ -112,8 +112,8 @@ public class JobService {
         List<Object[]> count = jobRepository.findCountGroupByEducation(type);
 
         double item = 0;
-        for (int i = 0; i < count.size(); i++) {
-            item = item + Double.valueOf(count.get(i)[1].toString());
+        for (Object[] objects : count) {
+            item = item + Double.valueOf(objects[1].toString());
         }
         for (int i = 1; i < count.size(); i++) {
             ArrayList<Object> data = new ArrayList<>();
@@ -141,13 +141,13 @@ public class JobService {
         bigdataSalary.add("大数据");
         cloudSalary.add("云计算");
         List<Object[]> avgs = jobRepository.findAvg();
-        for (int i = 0; i <avgs.size(); i++){
-            if ("北京".equals(avgs.get(i)[0]) || "上海".equals(avgs.get(i)[0]) || "广州".equals(avgs.get(i)[0]) || "深圳".equals(avgs.get(i)[0]) || "杭州".equals(avgs.get(i)[0]) || "南京".equals(avgs.get(i)[0]) || "成都".equals(avgs.get(i)[0]) || "苏州".equals(avgs.get(i)[0]) || "武汉".equals(avgs.get(i)[0]) || "合肥".equals(avgs.get(i)[0])){
-                city.add(avgs.get(i)[0]);
-                uiSalary.add(avgs.get(i)[1]);
-                javaSalary.add(avgs.get(i)[2]);
-                bigdataSalary.add(avgs.get(i)[3]);
-                cloudSalary.add(avgs.get(i)[4]);
+        for (Object[] avg : avgs) {
+            if ("北京".equals(avg[0]) || "上海".equals(avg[0]) || "广州".equals(avg[0]) || "深圳".equals(avg[0]) || "杭州".equals(avg[0]) || "南京".equals(avg[0]) || "成都".equals(avg[0]) || "苏州".equals(avg[0]) || "武汉".equals(avg[0]) || "合肥".equals(avg[0])) {
+                city.add(avg[0]);
+                uiSalary.add(avg[1]);
+                javaSalary.add(avg[2]);
+                bigdataSalary.add(avg[3]);
+                cloudSalary.add(avg[4]);
             }
         }
         allJob.add(city);

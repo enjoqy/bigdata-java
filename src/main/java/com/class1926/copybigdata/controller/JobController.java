@@ -6,104 +6,80 @@ import com.class1926.copybigdata.entity.ProvinceResult;
 import com.class1926.copybigdata.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ *
+ * @author zell
+ */
 @RestController
 public class JobController {
 
     @Autowired
     private JobService jobService;
 
-    @RequestMapping("city")
+    @GetMapping("city")
     public CityResult getInfoByCity(String type) {
         Object[][] citys = jobService.getCity(type);
 
-        CityResult cityResult = CityResult.builder().city(citys[0])
+        return CityResult.builder().city(citys[0])
                 .avgByCity(citys[1])
                 .countByCity(citys[2])
                 .experience(citys[3])
                 .budget(citys[4]).build();
-        return cityResult;
-
     }
 
-    @RequestMapping("province")
+    @GetMapping("province")
     public ProvinceResult getInfoByProvince(String type) {
         Object[][] provinces = jobService.getProvince(type);
 
-        ProvinceResult provinceResult = ProvinceResult.builder().province(provinces[0])
+        return ProvinceResult.builder().province(provinces[0])
                 .avgByProvince(provinces[1])
                 .countByProvince(provinces[2])
                 .experience(provinces[3])
                 .budget(provinces[4]).build();
-        return provinceResult;
-
     }
 
-    @RequestMapping("cityMap")
+    @GetMapping("cityMap")
     public List<MapResult> getMapByCity(String type) {
-
-        List mapResult = jobService.getMapByCity(type);
-
-        return mapResult;
+        return jobService.getMapByCity(type);
     }
 
-    @RequestMapping("cityAvgSalaryMap")
+    @GetMapping("cityAvgSalaryMap")
     public List<MapResult> getAvgSalaryByCity(String type) {
-
-        List mapResult = jobService.getAvgSalaryByCity(type);
-
-        return mapResult;
+        return jobService.getAvgSalaryByCity(type);
     }
 
-    @RequestMapping("cityAvgExperienceMap")
+    @GetMapping("cityAvgExperienceMap")
     public List<MapResult> getAvgExperienceByCity(String type) {
-
-        List mapResult = jobService.getAvgExperienceByCity(type);
-
-        return mapResult;
+        return jobService.getAvgExperienceByCity(type);
     }
 
-    @RequestMapping("provinceMap")
+    @GetMapping("provinceMap")
     public List<MapResult> getMapByProvince(String type) {
-
-        List mapResult = jobService.getMapByProvince(type);
-
-        return mapResult;
+        return jobService.getMapByProvince(type);
     }
 
-    @RequestMapping("provinceAvgSalaryMap")
+    @GetMapping("provinceAvgSalaryMap")
     public List<MapResult> getAvgSalaryByProvince(String type) {
-
-        List mapResult = jobService.getAvgSalaryByProvince(type);
-
-        return mapResult;
+        return jobService.getAvgSalaryByProvince(type);
     }
 
-    @RequestMapping("provinceAvgExperienceMap")
+    @GetMapping("provinceAvgExperienceMap")
     public List<MapResult> getAvgExperienceByProvince(String type) {
-
-        List mapResult = jobService.getAvgExperienceByProvince(type);
-
-        return mapResult;
+        return jobService.getAvgExperienceByProvince(type);
     }
 
     @GetMapping("education")
     public List<Object> getCountByEducation(String type){
-        List<Object> all = jobService.getCountByEducation(type);
-        return all;
+        return jobService.getCountByEducation(type);
     }
 
-    @RequestMapping("all")
+    @GetMapping("all")
     public List getAllJob(){
-
-        List allJob = jobService.getAllJob();
-
-        return allJob;
-
+        return jobService.getAllJob();
     }
 
 }

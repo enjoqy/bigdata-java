@@ -3,6 +3,10 @@ package com.class1926.copybigdata.entity;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ *
+ * @author zell
+ */
 @Data
 @Builder
 public class CityResult {

@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ *
+ * @author zell
+ */
 @Data
 @Builder
 @AllArgsConstructor

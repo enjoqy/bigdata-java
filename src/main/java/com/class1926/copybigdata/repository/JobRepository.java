@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ *
+ * @author zell
+ */
 @Repository
 public interface JobRepository extends JpaRepository<Job, Long> {
 
@@ -48,5 +52,6 @@ public interface JobRepository extends JpaRepository<Job, Long> {
             "(select address,AVG(salary) as cloudsalary FROM job_java where type='cloud' GROUP BY address)c " +
             "WHERE u.address=j.address and u.address=b.address and u.address=c.address", nativeQuery = true)
     List<Object[]> findAvg();
+
 }
 
