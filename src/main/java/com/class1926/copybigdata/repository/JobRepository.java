@@ -53,5 +53,6 @@ public interface JobRepository extends JpaRepository<Job, Long> {
             "WHERE u.address=j.address and u.address=b.address and u.address=c.address", nativeQuery = true)
     List<Object[]> findAvg();
 
+
 }
 
